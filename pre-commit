@@ -2,7 +2,7 @@
 
 # Pre-commit hook that prevents comments starting with //!!! from being committed
 
-FILES_PATTERN='\.(h|m|mm|c|cpp|swift|java)(\..+)?$'
+FILES_PATTERN='\.(h|m|mm|c|cpp|swift|java)$'
 DONT_COMMIT_PATTERN=//!!!
 
 git diff --cached --name-only | \
