@@ -5,9 +5,12 @@
 FILES_PATTERN='\.(h|m|mm|c|cpp|swift|java)$'
 DONT_COMMIT_PATTERN=//!!!
 
+if (git diff --cached --name-only | grep -E $FILES_PATTERN)
+then
 git diff --cached --name-only | \
 grep -E $FILES_PATTERN | \
 GREP_COLOR='1;31' xargs grep --color --with-filename -n $DONT_COMMIT_PATTERN && \
 echo 'Debug or temporary code found. Search codebase for' $DONT_COMMIT_PATTERN 'and remove' && exit 1
+fi
 
 exit 0
